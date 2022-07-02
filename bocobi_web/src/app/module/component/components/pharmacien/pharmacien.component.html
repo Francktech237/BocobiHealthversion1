@@ -1,0 +1,151 @@
+
+<div class="container pl-5">
+    <div class=" row flex">
+        <!-- <div class="card ml-4" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+              <div class="card ml-4" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                 
+                  <div class="card ml-4" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                      </div> -->
+
+                    
+    </div>
+</div>
+<div class="container">
+  <label type="button" class="btn btn-success btn-md p-3 shadow-lg fixed"style="border-radius:100%;  width: 63px;" data-toggle="modal" data-target="#Modal2">
+   +
+  </label>
+  
+  
+  
+  <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="Modal2" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Informations Du Pharmacien</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                      <form  >
+                              <div class="form-group flex">
+                                      <img [src]=url title="profile Picture" style="border-radius: 100%;"height="70px" width="70px"alt="">
+                                              <input type="file" id="img"(change)="onFileSelected($event)"style="display:none"class="form-control"  name="photoProfil"[(ngModel)]=" medecin.photoProfil"required>
+                                              <label for="img" class="p-2  rounded-lg bg bg-primary "style="border-radius:2px solid black;margin-left:8px;color:white;">photo</label>
+                                </div>  
+                          <div class="form-group row flex">
+                               <div class="col-6">
+                                  <input type="text" class="form-control" id="nameMedecin" placeholder="nom"name="name"[(ngModel)]=" medecin.name" required>
+                                </div>
+                                <div class="col-6">
+                                  <input type="text" class="form-control" id="nameMedecin" placeholder="prenom"name="username"[(ngModel)]=" medecin.username" required>
+                                </div>
+                               </div>  
+                          <div class="form-group row flex">
+                              <div class="col-6">
+                                  <select id="sexeMedecin" class="form-control" name="Sexe" [(ngModel)]=" medecin.Sexe" required>
+                                      <option value="Masculin">
+                                          Masculin
+                                             
+                                      </option>
+                                    <option value="Feminin">
+                                       Feminin
+                                      
+                                    </option>
+                               </select>
+                                </div>
+                                <div class="col-6">
+                                  <input type="email" class="form-control" id="nameMedecin" placeholder="email"name="email"[(ngModel)]=" medecin.email" required>
+                                </div>
+                              
+                          </div>  
+                          <div class="form-group row flex">
+                              <div class="col-6">
+                                  <select  id="GradeEmploye" class="form-control" name="GradeEmploye" [(ngModel)]=" medecin.GradeEmploye" required>
+                                      <option value="premier">
+                                           premier
+                                             
+                                      </option>
+                                      <option value=" deuxieme">
+                                     
+                                       deuxieme
+                                      </option>
+                               </select>
+                                </div>
+                                <div class="col-6">
+                                    <select  id="specialiteMedecin" class="form-control" name="specialiteMedecin" [(ngModel)]=" medecin.specialiteMedecin" required>
+                                        <option value="Genycologue">
+                                            Genycologue
+                                                
+                                         </option>
+                                  <option value="Pediatre">
+                                         Pediatre
+                                         
+                                  </option>
+                                 </select>
+                                </div>
+                              
+                          </div>  
+                        
+                          <div class="form-group row flex">
+                              <div class="col-6">
+                                  <input type="text" class="form-control" id="matricule" placeholder=" matricule"name="matricule"[(ngModel)]=" medecin.matricule" required>
+                                 
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="numTel" placeholder=" numTel"name="numTel"[(ngModel)]=" medecin.numTel" required>
+                                </div>
+                              
+                          </div>  
+                          <div class="form-group row flex">
+                              <div class="col-6">
+                                  <input type="text" class="form-control" id="nationalite" placeholder=" nationalite"name="nationalite"[(ngModel)]=" medecin.nationalite" required>
+                                 
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="serviceMedecin" placeholder=" serviceMedecin"name="serviceMedecin"[(ngModel)]=" medecin.serviceMedecin" required>
+                                </div>
+                              
+                          </div>  
+       
+                                        
+                          
+                      
+                          
+                         
+                          <div class="form-group ">
+                                        
+                              <input type="text" class="form-control"name="dateEnregistrement" disabled [(ngModel)]="medecin.dateEnregistrement"required>
+                      
+                          </div>
+                         
+                          <button type="submit"class="btn btn-primary"[disabled]="f.invalid">Enregistrer</button>
+                          <button type="button" class="btn btn-secondary btn-md" style="margin-left:30px;"data-dismiss="modal">Annuler</button>
+                  </form>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+  
+  

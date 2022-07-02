@@ -1,0 +1,202 @@
+<div class="container pt-3">
+
+
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog"  data-backdrop="static" aria-labelledby="Modal1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">Informations Du Medicament</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="modal-body">
+     
+                <form  (ngSubmit)="saveMedicament(f)" #f="ngForm">
+                        <div class="form-group">
+                            <select name="" id="description" class="form-control" name="descriptionMedicament" [(ngModel)]=" medicament.descriptionMedicament"required>
+                                   <option value="  Paracetamol">
+                                           Paracetamol
+                                          
+                                   </option>
+                                   <option value="  Cotrim">
+                                    Cotrim
+                                   
+                                 </option>
+                                 <option value="pillule">
+                                  pillule
+                                   
+                                 </option>
+                            </select>
+                        </div>  
+                        <div class="form-group">
+                                <select name="libelle" id="libelle" class="form-control"name="libelleMedicament"[(ngModel)]=" medicament.libelleMedicament"required>
+                                    <option value="Paracetamol"> Paracetamol  </option>
+                                       
+                                   
+                                </select>
+                        </div>  
+                        <div class="form-group">
+                             
+                                <input type="number" class="form-control" id="quantite" placeholder="Quantite"name="quantiteMedicament"[(ngModel)]=" medicament.quantiteMedicament"required>
+                        </div>  
+                        <div class="form-group">
+                      
+                                <input type="text" class="form-control" id="prix" placeholder="Prix"name="prixMedicament"[(ngModel)]=" medicament.prixMedicament"required>
+                        </div>  
+                        <div class="form-group">
+                                <input type="text"class="form-control" id="dateenr" placeholder="" disabled name="dateFabrication"[(ngModel)]=" medicament.dateFabrication"required>
+                        </div>  
+                        <div class="form-group">
+                                <input type="date"class="form-control" id="dateper"  placeholder="Date de peremption"name="datePeremption"[(ngModel)]=" medicament.datePeremption"required>
+                        </div>  
+                        <button type="submit"class="btn btn-primary"[disabled]="f.invalid">Enregistrer</button>
+                        <button type="button" class="btn btn-secondary"style="margin-left:280px;" data-dismiss="modal">Annuler</button>
+                </form>
+        </div>
+        <!-- <div class="modal-footer">
+        
+        <button type="button" class="btn btn-warning">Save</button>
+        </div> -->
+        </div>
+        </div>
+        </div>
+
+
+       
+        <div class="card shadow mb-4 col-12">
+          <div class="card-header py-3">
+              <div class="row">
+                  <div class="col-md-9">
+                   <h6 class="m-0 font-weight-bold text-primary">Liste des patients</h6>
+                  </div>
+                  <div class="col-md-12 flex">
+                          <div class="row">
+                        <div class="col-9 pt-3">
+                                <button 
+                                    type="button" class="btn btn-secondary" data-toggle="modal" data-target="#Modal1">
+                                        Ajouter Un Medicament
+                                </button>
+                        </div>    
+                        <div class="col-3 flex">
+                                        <input type="text"class="form-control"placeholder="recher ...">
+                                    
+                                </div>            
+                        </div> 
+                  </div>
+              </div>
+          </div>
+          <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                          <tr class="bg bg-success" style="color:white">
+                              <th>#</th>
+                              <th>Nom</th>
+                              <th>type</th>
+                              <th>quantite</th>
+                              <th>prix</th>
+                              <th>dateenr</th>
+                              <th>dateper</th>
+                              <th>Action</th>
+                      </thead>
+                      <!-- <tfoot>
+                          <tr>
+                              <th>#</th>
+                              <th>Nom</th>
+                              <th>type</th>
+                              <th>quantite</th>
+                              <th>prix</th>
+                              <th>dateenr</th>
+                              <th>dateper</th>
+                              <th>Option</th>
+                          </tr>
+                      </tfoot> -->
+                      <tbody>
+                          <tr *ngFor="let medicament of medicaments">
+                                  <td>{{ medicament.idMedicament }}</td>
+                                  <td>{{ medicament.descriptionMedicament }}</td>
+                                  <td>{{ medicament.libelleMedicament}}</td>
+                                  <td>{{ medicament.quantiteMedicament}}</td>
+                                  <td>{{ medicament.prixMedicament}}</td>
+                                  <td>{{ medicament.dateFabrication | date:'MM/dd/yyyy'}}</td>
+                                  <td>{{ medicament.datePeremption | date:'MM/dd/yyyy'}}</td>
+                                  <td class="flex">
+                                   <img (click)="editmedic(medicament.idMedicament)"data-toggle="modal" data-target="#Modal2"src="..\assets\img\edit.png" alt="">
+                                <img (click)="deletemedic(medicament.idMedicament)"src="..\assets\img\de.png" alt="">
+                                  </td>
+                                 
+                          </tr>
+                      </tbody>
+                  </table>
+                
+              </div>
+          </div>
+      </div>
+      
+
+
+     
+
+          <div class="modal fade" id="Modal2" tabindex="-1" role="dialog"  data-backdrop="static" aria-labelledby="Modal2" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="ModalLabel">Informations Du Medicament</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="modal-body">
+         
+              <form  #f="ngForm" (ngSubmit)="onupdate()">
+                <div class="form-group">
+                    <select name="" id="description" class="form-control" name="descriptionMedicament" [(ngModel)]=" medicament.descriptionMedicament"required>
+                           <option value="  Paracetamol">
+                                   Paracetamol
+                                  
+                           </option>
+                           <option value="  Cotrim">
+                            Cotrim
+                           
+                         </option>
+                    </select>
+                </div>  
+                <div class="form-group">
+                        <select name="libelle" id="libelle" class="form-control"name="libelleMedicament"[(ngModel)]=" medicament.libelleMedicament"required>
+                            <option value="Paracetamol"> Paracetamol  </option>
+                               
+                           
+                        </select>
+                </div>  
+                <div class="form-group">
+                     
+                        <input type="number" class="form-control" id="quantite" placeholder="Quantite"name="quantiteMedicament"[(ngModel)]=" medicament.quantiteMedicament"required>
+                </div>  
+                <div class="form-group">
+              
+                        <input type="text" class="form-control" id="prix" placeholder="Prix"name="prixMedicament"[(ngModel)]=" medicament.prixMedicament"required>
+                </div>  
+                <div class="form-group">
+                        <input type="date"class="form-control" id="dateenr" placeholder="Date d'enregistrement"name="dateFabrication"[(ngModel)]=" medicament.dateFabrication"required>
+                </div>  
+                <div class="form-group">
+                        <input type="date"class="form-control" id="dateper"  placeholder="Date de peremption"name="datePeremption"[(ngModel)]=" medicament.datePeremption"required>
+                </div>  
+                
+                <button type="submit"class="btn btn-primary">Modifier</button>
+                <button type="button" class="btn btn-secondary"style="margin-left:280px;" data-dismiss="modal">Annuler</button>
+        </form>
+            </div>
+            <!-- <div class="modal-footer">
+            
+            <button type="button" class="btn btn-warning">Save</button>
+            </div> -->
+            </div>
+            </div>
+            
+            </div>
+            
+
+
+         

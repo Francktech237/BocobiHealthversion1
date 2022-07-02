@@ -1,0 +1,90 @@
+<!-- <section style="background-color: #eee;"> -->
+<div class="container ">
+    <div class="container">
+        <label type="button" class="btn btn-success btn-md p-3 shadow-lg fixed"style=" margin-top: 20px; width: 63px;" data-toggle="modal" data-target="#Modal2">
+         +
+        </label>
+        
+        
+        
+        <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="Modal2" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="ModalLabel">Informations De L'examen</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                            <form  (ngSubmit)=" saveExam(f)" #f="ngForm">
+                                
+                                <div class="form-group">
+                                   
+                                        <input type="text" class="form-control" id="libelleExamen" placeholder="nom"name="libelleExamen"[(ngModel)]=" exam.libelleExamen" required>
+                                 </div>  
+                                     
+                                <div class="form-group ">
+                                  
+                                  <textarea name="descriptionExamen" id="descriptionExamen" placeholder="description" cols="53" rows="5"[(ngModel)]=" exam.descriptionExamen" required></textarea>
+                                    
+                                </div> 
+                                <div class="form-group">
+                                   
+                                    <input type="text" class="form-control" id="typeExamen" placeholder="typeExamen"name="typeExamen"[(ngModel)]=" exam.typeExamen" required>
+                               </div> 
+                               <div class="form-group">
+                                   
+                                  <input type="text" class="form-control" id="ancienTarifExamen" placeholder="ancienTarifExamen"name="ancienTarifExamen"[(ngModel)]=" exam.ancienTarifExamen" required>
+                             </div> 
+                             <div class="form-group">
+                                   
+                                <input type="text" class="form-control" id="nouveauTarifExamen" placeholder="nouveauTarifExamen"name="nouveauTarifExamen"[(ngModel)]=" exam.nouveauTarifExamen" required>
+                           </div> 
+                              
+                               
+                                <button type="submit"class="btn btn-primary"[disabled]="f.invalid">Enregistrer</button>
+                                <button type="button" class="btn btn-secondary btn-md" style="margin-left:30px;"data-dismiss="modal">Annuler</button>
+                        </form>
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+
+              <table class="table table-hover"*ngFor="let examen of examens">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom examen</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Ancien Prix</th>
+                    <th scope="col">Nouveau Prix</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">{{examen.idExamen}}</th>
+                    <td>{{examen.libelleExamen}}</td>
+                    <td>{{examen.descriptionExamen}}</td>
+                    <td>{{examen.typeExamen}}</td>
+                    <td>{{examen.ancienTarifExamen}}</td>
+                    <td>{{examen.nouveauTarifExamen}}</td>
+                  </tr>
+                  <!-- <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                  </tr> -->
+                </tbody>
+              </table>
+</div>
+<!-- </section> -->
+

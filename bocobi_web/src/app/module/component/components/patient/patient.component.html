@@ -1,0 +1,263 @@
+<section style="background-color: #eee; height: 100%;" class="shadow-lg rounded">
+<div class="container col-12 pt-2">
+<button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#Modal2">
+   Nouveau Patient
+</button>
+
+
+
+<div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="Modal2"  data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel">Informations du Patient</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <form (ngSubmit)="onSubmitForm(f)" #f="ngForm" >
+                            <div class="form-group flex">
+                                    <img [src]=url title="profile Picture" style="border-radius: 100%;"height="70px" width="70px"alt="">
+                                            <input type="file" id="img"(change)="onFileSelected($event)"style="display:none"class="form-control"  name="photoProfil"[(ngModel)]=" patient.photoProfil"required>
+                                            <label for="img" class="p-2  rounded-lg bg bg-primary "style="border-radius:2px solid black;margin-left:8px;color:white;">photo</label>
+                              </div>  
+                            <div class="form-group row flex">
+                              <div class="col-6">
+                                <input type="text" class="form-control" name="name"placeholder="nom"[(ngModel)]="patient.name"required>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control"name="username"placeholder="prenom"[(ngModel)]="patient.username"required>
+                            </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-6">
+                                        <input type="text" class="form-control"name="numTel"placeholder="telephone"[(ngModel)]="patient.numTel"required>
+                                </div>
+                                <div class="col-6">
+                                        <input type="email" class="form-control"name="email"placeholder="email"[(ngModel)]="patient.email"required>
+                                </div>
+                               
+                            </div>
+                            <div class="form-group row">
+                                    <div class="col-6">
+                                            <input type="date" class="form-control"name="dateNaissance" placeholder="date naissance"[(ngModel)]="patient.dateNaissance"required>
+                                    </div>
+                                    <div class="col-6">
+                                            <select name="" id=""class="form-control"name="Sexe"[(ngModel)]="patient.Sexe"required>
+                                                    <option value="Masculin">Masculin</option>
+                                                    <option value="Feminin">Feminin</option>
+                                             </select>
+                                    </div>
+                                   
+                                </div>
+                            <!-- <!-- <div class="form-group">
+                           
+                                <input type="text" class="form-control"name="numerotel"placeholder="telephone"[(ngModel)]="patient.numerotel"required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control"name="email"placeholder="email"[(ngModel)]="patient.email"required>
+                            </div>
+                            <div class="form-group">
+                           
+                                <input type="date" class="form-control"name="datenaiss" placeholder="date naissance"[(ngModel)]="patient.datenaiss"required>
+                            </div> -->
+                            <div class="form-group row">
+                                    <div class="col-6">
+                                            <input type="text" class="form-control"name="lieuResidence" placeholder="lieuResidence"[(ngModel)]="patient.lieuResidence"required>
+                                    </div>
+                                    <div class="col-6">
+                                            <input type="text" class="form-control"name=" nationalite" placeholder=" nationalite"[(ngModel)]="patient.nationalite"required>
+                                    </div>
+                                   
+                                </div>
+                                <div class="form-group row">
+                                        <div class="col-6">
+                                                <input type="number" class="form-control"name=" age" placeholder="age"[(ngModel)]="patient.age"required>
+                                        </div>
+                                        <div class="col-6">
+                                                <input type="text" class="form-control"name="statutMatrimonial" placeholder=" statutMatrimonial"[(ngModel)]="patient.statutMatrimonial"required>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="form-group ">
+                                      
+                                                    <input type="text" class="form-control"name="dateEnregistrement" disabled [(ngModel)]="patient.dateEnregistrement"required>
+                                            
+                                        
+                                           
+                                        </div>
+                            <div class="form-group flex" style="justify-content:space-around;">
+                              
+                            <button type="submit" class="btn btn-primary"[disabled]="f.invalid">Enregistrer</button>
+                            <button type="button" style="margin-left:30px;" class="btn btn-secondary btn-md" data-dismiss="modal">Annuler</button>
+                        </div>
+                        </form>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+
+
+
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4 mt-2 col-12">
+                <div class="card-header py-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                         <h2 class="m-0 text-primary">Liste des patients</h2>
+                        </div>
+                        <div class="col-md-3">
+                                <!-- <app-newpatient></app-newpatient> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <!-- <th>Contact</th>
+                                    <th>Date Naissance</th> -->
+                                    <th>Sexe</th>
+                                    <th>Age</th>
+                                    <th>Action</th>  
+                                 
+                            </thead>
+                            <!-- <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th>Contact</th>
+                                    <th>Date Naissance</th>
+                                    <th>Sexe</th>
+                                    <th>email</th>
+                                    <th>Option</th>
+                                </tr>
+                            </tfoot> -->
+                            <tbody >
+                                <tr *ngFor="let patient of patients">
+                                    <td>{{ patient.idPersonne }}</td>
+                                    <td>{{ patient.name }}</td>
+                                    <td>{{ patient.username }}</td>
+                                    <!-- <td>{{ patient.numerotel}}</td>
+                                    <td>{{ patient.datenaiss | date:'yMMMMEEEEd'}}</td> -->
+                                    <td>{{ patient.Sexe}}</td>
+                                    <td>{{ patient.age}}</td>
+                                    <!-- <td>{{ patient.email}}</td> -->
+                                    <td class="flex pl-10">
+                                       <img (click)="uppatient(patient.idPersonne)"src="..\assets\img\edit.png"data-toggle="modal" data-target="#Modal3" alt="">
+                                      <img (click)="deletepa(patientt.idPersonne)" src="..\assets\img\de.png" alt="">
+                                    </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="Modal3" tabindex="-1" role="dialog"  data-backdrop="static" aria-labelledby="Modal3" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Informations Du Patient</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+                </div>
+                <div class="modal-body">
+             
+                        <form (ngSubmit)="onSubmitForm(f)" #f="ngForm" >
+                                <div class="form-group flex">
+                                        <img [src]=url title="profile Picture" style="border-radius: 100%;"height="70px" width="70px"alt="">
+                                                <input type="file" id="img"(change)="onFileSelected($event)"style="display:none"class="form-control"  name="photoProfil"[(ngModel)]=" patient.photoProfil"required>
+                                                <label for="img" class="p-2  rounded-lg bg bg-primary "style="border-radius:2px solid black;margin-left:8px;color:white;">photo</label>
+                                  </div>  
+                                <div class="form-group row flex">
+                                  <div class="col-6">
+                                    <input type="text" class="form-control" name="name"placeholder="nom"[(ngModel)]="patient.name"required>
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control"name="username"placeholder="prenom"[(ngModel)]="patient.username"required>
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-6">
+                                            <input type="text" class="form-control"name="numTel"placeholder="telephone"[(ngModel)]="patient.numTel"required>
+                                    </div>
+                                    <div class="col-6">
+                                            <input type="email" class="form-control"name="email"placeholder="email"[(ngModel)]="patient.email"required>
+                                    </div>
+                                   
+                                </div>
+                                <div class="form-group row">
+                                        <div class="col-6">
+                                                <input type="date" class="form-control"name="dateNaissance" placeholder="date naissance"[(ngModel)]="patient.dateNaissance"required>
+                                        </div>
+                                        <div class="col-6">
+                                                <select  id=""class="form-control"name="Sexe"[(ngModel)]="patient.Sexe"required>
+                                                        <option value="Masculin">Masculin</option>
+                                                        <option value="Feminin">Feminin</option>
+                                                 </select>
+                                        </div>
+                                       
+                                    </div>
+                                <!-- <!-- <div class="form-group">
+                               
+                                    <input type="text" class="form-control"name="numerotel"placeholder="telephone"[(ngModel)]="patient.numerotel"required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control"name="email"placeholder="email"[(ngModel)]="patient.email"required>
+                                </div>
+                                <div class="form-group">
+                               
+                                    <input type="date" class="form-control"name="datenaiss" placeholder="date naissance"[(ngModel)]="patient.datenaiss"required>
+                                </div> -->
+                                <div class="form-group row">
+                                        <div class="col-6">
+                                                <input type="text" class="form-control"name="lieuResidence" placeholder="lieuResidence"[(ngModel)]="patient.lieuResidence"required>
+                                        </div>
+                                        <div class="col-6">
+                                                <input type="text" class="form-control"name=" nationalite" placeholder=" nationalite"[(ngModel)]="patient.nationalite"required>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="form-group row">
+                                            <div class="col-6">
+                                                    <input type="number" class="form-control"name=" age" placeholder="age"[(ngModel)]="patient.age"required>
+                                            </div>
+                                            <div class="col-6">
+                                                    <input type="text" class="form-control"name="statutMatrimonial" placeholder=" statutMatrimonial"[(ngModel)]="patient.statutMatrimonial"required>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="form-group ">
+                                          
+                                                        <input type="text" class="form-control"name="dateEnregistrement" disabled [(ngModel)]="patient.dateEnregistrement"required>
+                                                
+                                            
+                                               
+                                            </div>
+                                <div class="form-group flex" style="justify-content:space-around;">
+                                  
+                                <button type="submit" class="btn btn-primary"[disabled]="f.invalid">Modifier</button>
+                                <button type="button" style="margin-left:30px;" class="btn btn-secondary btn-md" data-dismiss="modal">Annuler</button>
+                            </div>
+                            </form>
+                </div>
+                <!-- <div class="modal-footer">
+                
+                <button type="button" class="btn btn-warning">Save</button>
+                </div> -->
+                </div>
+                </div>
+                
+                </div>
+            </div>
+        </section>
+           
